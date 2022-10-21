@@ -31,12 +31,16 @@ test("Draw button displays the choices available", async () => {
 
 
 
-// test("add to duo button displays the players duo added", async () => {
-//     const duoBtn = await driver.findElement(By.xpath("//section/div/button"))
-//     const playerAdded= await driver.findElement(By.id("player-duo"))
-//     console.log(duoBtn)
-//     duoBtn.click()
-//     const displayed = await playerAdded.isDisplayed()
-//     expect(displayed).toBe(true)
-//     await driver.sleep(2000)
-// })
+test("add to duo button displays the players duo added", async () => {
+    const title = await driver.findElement(By.id('title'))
+    const titleDisplayed = await title.isDisplayed()
+    const drawBtn = await driver.findElement(By.id('draw'))
+    drawBtn.click()
+    await driver.sleep(2000)
+    const duoBtn = await driver.findElement(By.className("bot-btn"))
+    const playerAdded = await driver.findElement(By.id("player-duo"))
+    duoBtn.click()
+    const playerDisplayed = await playerAdded.isDisplayed()
+    expect(playerDisplayed).toBe(true)
+    await driver.sleep(2000)
+})
